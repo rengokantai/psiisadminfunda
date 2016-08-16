@@ -25,3 +25,19 @@ $output="C:\exe"
 Invoke-WebRequest -Uri $url -Outfile $output
 & "$output" /passive /norestart
 ```
+######6 create permission
+```
+$Right = "ReadAndExecute"
+$Principal = "IIS_IUERS"
+$StartingDir = "C:\ke\wwwroot"
+
+foreach ($fie=le in $(Get-ChildItem $StartingDir - recurse)){
+  $rule = new-object
+  System.Security.AccessControl.FileSystemAccessRule($Principal, $Right, "Allow")
+  $acl = Get-Acl $file.FullName
+  Write-Output $file.FullName
+  $acl.SetAccessRule($rule)
+  Set-Acl $file.Fullname $acl
+}
+```
+```
