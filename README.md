@@ -40,4 +40,22 @@ foreach ($fie=le in $(Get-ChildItem $StartingDir - recurse)){
   Set-Acl $file.Fullname $acl
 }
 ```
+######9 application pools in IIS
+some settings  
+Recycling settings  
+Process security  
+Bitness
+######10 creatinga application pools
+Application Pools->DefaultAppPool(R)->Advanced setting
+```
+Get-Item IIS:\AppPools\DefaultAppPool | Select-Object *
+```
+
+######12 create a virtual dict
+```
+if(!(Test-Path 'IIS:\Sites\Default Web Site|Ke'))
+{
+  New-Item 'IIS:\Sites\Default Web Site\Ke'
+  -physicalPath C:\ke\appname -type VirtualDirectory
+}
 ```
