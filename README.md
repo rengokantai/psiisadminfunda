@@ -17,3 +17,11 @@ Copy-Item -Path C:\temp\webfiles\* -Destination C:\ke\wwwroot -Recurse
 
 Backup-Webconfiguration -Name IISBackup
 ```
+
+######5 Install .Net
+```
+$url = "https://"
+$output="C:\exe"
+Invoke-WebRequest -Uri $url -Outfile $output
+& "$output" /passive /norestart
+```
